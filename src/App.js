@@ -9,6 +9,7 @@ import { CreateCourse } from './pages/CreateCourse';
 import { CreateStudent } from './pages/CreateStudent';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { StudentDetails } from './pages/StudentDetails';
 
 function App() {
   const [courseList, setCourseList] = useState([])
@@ -38,6 +39,7 @@ function App() {
       <Route element={<CourseRegistration courseList={courseList} studentList={studentList} />} path='/course-registration' ></Route>
       <Route element={<CreateCourse/>} path='/create-course' ></Route>
       <Route element={<CreateStudent/>} path='/create-student' ></Route>
+      <Route element={<StudentDetails/>} path='/student/:studentId' ></Route>
       <Route element={<Login/>} path='/login' ></Route>
     </Routes>
   );

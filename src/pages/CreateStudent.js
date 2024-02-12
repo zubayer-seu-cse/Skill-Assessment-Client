@@ -50,7 +50,9 @@ export const CreateStudent = () => {
 
         try {
             const { data } = await axios.post("http://localhost:8080/create-student", studentData)
-            console.log(data)
+            if(!data._id){
+                setErr("Student Exists!")
+            }
         } catch (err) {
             setErr(err.message)
         }
