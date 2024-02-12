@@ -1,6 +1,7 @@
 import React from 'react'
 
-export const CourseRegistration = () => {
+export const CourseRegistration = ({courseList, studentList}) => {
+  
   return (
     <div>
         <form>
