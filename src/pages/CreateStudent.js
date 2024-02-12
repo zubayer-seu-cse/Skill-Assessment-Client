@@ -1,12 +1,14 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { ErrorMessage } from '../components/ErrorMessage';
 
 export const CreateStudent = () => {
 
     const navigate = useNavigate();
     const [err, setErr] = useState();
 
-    const createStudent = (e) => {
+    const createStudent = async (e) => {
         e.preventDefault();
 
         const studentId = e.target.studentId.value;
@@ -16,30 +18,41 @@ export const CreateStudent = () => {
         const lastName = e.target.lastName.value;
 
         const gender = e.target.gender.value;
-        
+
         const phones = e.target.phones.value.split(', ');
-        
+
         const emails = e.target.emails.value.split(', ');
 
-        const education = e.target.education.value.split(', ');
+        const educationTemp = e.target.education.value.split(', ');
+        const education = educationTemp.map(entry => {
+            const temp = entry.split("-");
+            const eduEntry = {
+                degree: temp[0],
+                institute: temp[1],
+                passingYear: temp[2],
+                gpa: parseFloat(temp[3]),
+            }
+            return eduEntry;
+        })
 
         const address = e.target.address.value;
 
-        fetch("http://localhost:8080/create-course", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({studentId, name: {firstName, middleName, lastName}, gender, phones, emails, education, address})
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data._id != "N/A") {
-                    navigate("/")
-                } else {
-                    setErr("An error occured!")
-                }
-            })
+        const studentData = {
+            studentId,
+            name: { firstName, middleName, lastName },
+            gender,
+            phones,
+            emails,
+            education,
+            address
+        }
+
+        try {
+            const { data } = await axios.post("http://localhost:8080/create-student", studentData)
+            console.log(data)
+        } catch (err) {
+            setErr(err.message)
+        }
     }
     return (
         <div className='flex justify-center mt-8'>
@@ -56,9 +69,7 @@ export const CreateStudent = () => {
                 <input name='education' type='text' className='border-2 rounded mt-2' placeholder='Educations (Ex: HSC-EUSC-5-2020, .....)'></input>
                 <input name='address' type='text' className='border-2 rounded mt-2' placeholder='Address'></input>
                 <input value='Add Student' type='submit' className='bg-green-500 text-white font-bold rounded-md px-4 py-2 mt-2'></input>
-                <div>
-                    {err}
-                </div>
+                <ErrorMessage message={err} />
             </form>
         </div>
     )
