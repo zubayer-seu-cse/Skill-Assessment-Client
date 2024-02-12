@@ -1,7 +1,15 @@
 import React from 'react'
 
-export const SelectStudentCard = () => {
+export const SelectStudentCard = ({student, setVisibilityToggle, setSelectedStudent}) => {
+  const select = () =>{
+    setSelectedStudent(student)
+    setVisibilityToggle(false)
+  }
   return (
-    <div>SelectStudentCard</div>
+    <div className='grid grid-cols-3 border-2 border-black rounded-md my-2 font-bold'>
+      <p className='flex items-center justify-center px-4'>{student.name.firstName + " " + student.name.middleName}</p>
+      <p className='flex items-center justify-center px-4'>{student.studentId}</p>
+      <button onClick={select} >Assign Course</button>
+    </div>
   )
 }

@@ -44,7 +44,8 @@ export const CreateStudent = () => {
             phones,
             emails,
             education,
-            address
+            address,
+            assignedCourses: null
         }
 
         try {

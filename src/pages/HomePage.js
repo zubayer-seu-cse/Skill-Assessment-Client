@@ -7,7 +7,7 @@ export const HomePage = ({courseList, studentList}) => {
   return (
     <div className='grid grid-cols-2 mx-8'>
       <div>
-        <div className='grid grid-cols-3 rounded-md my-2 font-bold'>
+        <div className='grid grid-cols-2 rounded-md my-2 font-bold'>
           <p className='text-center'>Name</p>
           <p className='text-center'>Student Id</p>
         </div>
