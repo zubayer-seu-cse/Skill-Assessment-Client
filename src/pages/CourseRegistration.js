@@ -10,6 +10,7 @@ export const CourseRegistration = () => {
   const [courseList, setCourseList] = useState([])
   const [studentList, setStudentList] = useState([])
 
+  // fetchs the list of students and courses.
   useEffect(() => {
     axios.get("https://seu-course-registration.onrender.com/get-course-list")
       .then(res => setCourseList(res.data))

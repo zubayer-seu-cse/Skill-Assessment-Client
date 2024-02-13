@@ -17,6 +17,8 @@ export const HomePage = ({ courseListState, studentListState }) => {
     }
   }, [])
 
+
+  // Here the state has been lifted up to App.js
   useEffect(() => {
     axios.get("https://seu-course-registration.onrender.com/get-course-list")
       .then(res => courseListState.setCourseList(res.data))

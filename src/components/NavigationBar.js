@@ -46,6 +46,8 @@ export const NavigationBar = () => {
                 </div>
             </div>
 
+            {/* this is the menu for mobile view. In desktop view it remains hidden.
+            To toggle the view of this "visibile" state is being managed. */}
             <div style={visibile ? { display: "flex" } : { display: "none" }} className='flex-col px-8 mb-8 items-center font-bold'>
                 <div className='w-full text-center px-8 border-b-2 pb-1 border-black'>
                     <Link to={"/course-registration"}>Register Course</Link>
