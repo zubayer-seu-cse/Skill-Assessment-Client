@@ -9,7 +9,7 @@ import { NavigationBar } from './components/NavigationBar';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <NavigationBar />
+    {/* <NavigationBar /> */}
     <App />
   </BrowserRouter>
 );

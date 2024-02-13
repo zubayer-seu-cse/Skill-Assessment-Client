@@ -5,6 +5,7 @@ import { StudentCard } from '../components/StudentCard'
 import { SearchStudents } from '../components/SearchStudents'
 import { SearchCourses } from '../components/SearchCourses'
 import { useNavigate } from 'react-router-dom'
+import { NavigationBar } from '../components/NavigationBar'
 
 export const HomePage = ({ courseListState, studentListState }) => {
   const navigate = useNavigate()
@@ -29,6 +30,8 @@ export const HomePage = ({ courseListState, studentListState }) => {
 
   return (
     <>
+      <NavigationBar />
+
       <div className='text-center font-bold text-[18px]'>
         <p>Welcome, <span className='text-green-500'>{loggedInUser?.name}</span></p>
       </div>

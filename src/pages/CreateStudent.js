@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { ErrorMessage } from '../components/ErrorMessage';
+import { NavigationBar } from '../components/NavigationBar';
 
 export const CreateStudent = () => {
 
@@ -62,6 +63,7 @@ export const CreateStudent = () => {
     }
     return (
         <>
+            <NavigationBar />
             <div>
                 <p className='font-bold text-center text-[18px] mt-4'>Add a Student</p>
             </div>

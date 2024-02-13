@@ -3,6 +3,7 @@ import { ErrorMessage } from '../components/ErrorMessage'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { SelectedCourseCard } from '../components/SelectedCourseCard';
+import { NavigationBar } from '../components/NavigationBar';
 
 export const UpdateStudent = () => {
     const { studentId } = useParams();
@@ -77,6 +78,7 @@ export const UpdateStudent = () => {
     return (
 
         <>
+            <NavigationBar />
             <div>
                 <p className='font-bold text-center text-[18px] mt-4'>
                     Update <span className='text-green-500'>{student.name?.firstName + "'s "}</span>

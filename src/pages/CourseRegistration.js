@@ -4,6 +4,7 @@ import { SelectCourseCard } from '../components/SelectCourseCard';
 import { SelectedCourseCard } from '../components/SelectedCourseCard';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { NavigationBar } from '../components/NavigationBar';
 
 export const CourseRegistration = () => {
   const [courseList, setCourseList] = useState([])
@@ -31,45 +32,48 @@ export const CourseRegistration = () => {
   }
 
   return (
-    <div className='px-8 text-[14px] lg:text-[15px]'>
+    <>
+      <NavigationBar />
+      <div className='px-8 text-[14px] lg:text-[15px]'>
 
-      <div style={{ display: visibilityToggle ? "block" : "none" }} >
-        <div className='grid grid-cols-3 rounded-md my-2 font-bold'>
-          <p className='text-center'>Name</p>
-          <p className='text-center'>Student Id</p>
-        </div>
-        {
-          studentList.map(student => <SelectStudentCard setVisibilityToggle={setVisibilityToggle} student={student} setSelectedStudent={setSelectedStudent} />)
-        }
-      </div>
-
-      <div style={{ display: visibilityToggle ? "none" : "block" }}>
-
-
-        <p className='text-center font-bold'>Selected Courses for <span className='text-green-500'>{selectedStudent.name?.firstName}</span></p>
-        <div className='grid grid-cols-3 lg:grid-cols-12 mt-4' >
+        <div style={{ display: visibilityToggle ? "block" : "none" }} >
+          <div className='grid grid-cols-3 rounded-md my-2 font-bold'>
+            <p className='text-center'>Name</p>
+            <p className='text-center'>Student Id</p>
+          </div>
           {
-            selectedCourses.length ? selectedCourses.map(course => <SelectedCourseCard course={course} selectedCoursesState={{ selectedCourses, setSelectedCourses }} />)
-              :
-              <p className='text-center font-bold text-grey-500 col-span-3'>No coures assigned yet!</p>
+            studentList.map(student => <SelectStudentCard setVisibilityToggle={setVisibilityToggle} student={student} setSelectedStudent={setSelectedStudent} />)
           }
         </div>
 
-        <div className='flex justify-end'>
-          <button onClick={finalize} style={selectedCourses.length ? { display: "block" } : { display: "none" }} className='p-2 px-4 bg-green-500 rounded-md mt-2 text-white font-bold' >
-            Finalize
-          </button>
-        </div>
+        <div style={{ display: visibilityToggle ? "none" : "block" }}>
+
+
+          <p className='text-center font-bold'>Selected Courses for <span className='text-green-500'>{selectedStudent.name?.firstName}</span></p>
+          <div className='grid grid-cols-3 lg:grid-cols-12 mt-4' >
+            {
+              selectedCourses.length ? selectedCourses.map(course => <SelectedCourseCard course={course} selectedCoursesState={{ selectedCourses, setSelectedCourses }} />)
+                :
+                <p className='text-center font-bold text-grey-500 col-span-3'>No coures assigned yet!</p>
+            }
+          </div>
+
+          <div className='flex justify-end'>
+            <button onClick={finalize} style={selectedCourses.length ? { display: "block" } : { display: "none" }} className='p-2 px-4 bg-green-500 rounded-md mt-2 text-white font-bold' >
+              Finalize
+            </button>
+          </div>
 
 
 
-        <p className='text-center font-bold mt-8'>Available Courses</p>
-        <div>
-          {
-            courseList.map(course => <SelectCourseCard course={course} selectedCoursesState={{ selectedCourses, setSelectedCourses }} />)
-          }
+          <p className='text-center font-bold mt-8'>Available Courses</p>
+          <div>
+            {
+              courseList.map(course => <SelectCourseCard course={course} selectedCoursesState={{ selectedCourses, setSelectedCourses }} />)
+            }
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

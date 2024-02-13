@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import { NavigationBar } from '../components/NavigationBar';
 
 export const CreateAdminAccount = () => {
     const navigate = useNavigate()
@@ -28,6 +29,7 @@ export const CreateAdminAccount = () => {
     }
     return (
         <>
+            <NavigationBar />
             <div>
                 <p className='font-bold text-center text-[18px] mt-4'>Create Admin Account!</p>
             </div>
