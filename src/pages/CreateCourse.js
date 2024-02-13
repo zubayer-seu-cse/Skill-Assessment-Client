@@ -21,16 +21,21 @@ export const CreateCourse = () => {
         }
     }
     return (
-        <div className='flex justify-center mt-8'>
-            <form onSubmit={createCourse} className='flex flex-col lg:w-[500px] mt-8' >
-                <input name='courseCode' type='text' className='border-2 rounded mt-2' placeholder='Course code'></input>
-                <input name='courseTitle' type='text' className='border-2 rounded mt-2' placeholder='Course Title'></input>
-                <input name='credits' type='text' className='border-2 rounded mt-2' placeholder='Number of Credits' ></input>
-                <input value='create course' type='submit' className='bg-green-500 text-white font-bold rounded-md px-4 py-2 mt-2'></input>
-                <div>
-                    {err}
-                </div>
-            </form>
-        </div>
+        <>
+            <div>
+                <p className='font-bold text-center text-[18px] mt-4'>Create a Course!</p>
+            </div>
+            <div className='flex justify-center mt-2'>
+                <form onSubmit={createCourse} className='flex flex-col w-full p-4 lg:w-[500px]' >
+                    <input name='courseCode' type='text' className='border-2 rounded mb-2' placeholder='Course code'></input>
+                    <input name='courseTitle' type='text' className='border-2 rounded mb-2' placeholder='Course Title'></input>
+                    <input name='credits' type='text' className='border-2 rounded mt-2' placeholder='Number of Credits' ></input>
+                    <input value='create course' type='submit' className='bg-green-500 text-white font-bold rounded-md px-4 py-2 mt-2'></input>
+                    <div>
+                        {err}
+                    </div>
+                </form>
+            </div>
+        </>
     )
 }

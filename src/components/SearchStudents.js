@@ -23,9 +23,9 @@ export const SearchStudents = ({ setStudentList }) => {
         }
     }
     return (
-        <form onSubmit={search}>
-            <input onChange={search} type="text" name="searchText" className='h-[30px] w-[200px] lg:w-[300px] rounded-full m-4 px-4 border-black border-[2px]' />
-            <input type='submit' value="Search" className='font-bold px-2 py-1 rounded-md bg-green-500 text-white' />
+        <form onSubmit={search} className='flex items-center'>
+            <input onChange={search} type="text" name="searchText" className='grow h-[30px] w-[200px] lg:w-[300px] rounded-full mr-2 lg:mr-4 px-4 border-black border-[2px]' />
+            <input type='submit' value="Search" className='h-[35px] font-bold px-2 py-1 rounded-md bg-blue-500 text-white' />
         </form>
     )
 }

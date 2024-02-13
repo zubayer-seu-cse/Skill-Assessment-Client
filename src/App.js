@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { StudentDetails } from './pages/StudentDetails';
 import { UpdateStudent } from './pages/UpdateStudent';
+import { CreateAdminAccount } from './pages/CreateAdminAccount';
 
 function App() {
   const [courseList, setCourseList] = useState([])
@@ -26,6 +27,7 @@ function App() {
       <Route element={<CreateStudent/>} path='/create-student' ></Route>
       <Route element={<StudentDetails/>} path='/student/:studentId' ></Route>
       <Route element={<UpdateStudent/>} path='/update-student/:studentId' ></Route>
+      <Route element={<CreateAdminAccount/>} path='/create-admin-account' ></Route>
       <Route element={<Login/>} path='/login' ></Route>
     </Routes>
   );

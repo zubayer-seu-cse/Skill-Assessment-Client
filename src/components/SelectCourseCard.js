@@ -3,7 +3,8 @@ import { SelectedCourseCard } from './SelectedCourseCard'
 
 export const SelectCourseCard = ({ course, selectedCoursesState }) => {
   const select = () => {
-    selectedCoursesState.setSelectedCourses([...selectedCoursesState.selectedCourses, course])
+
+    selectedCoursesState.setSelectedCourses([...selectedCoursesState.selectedCourses?.filter(c => c._id != course._id), course])
   }
   return (
     <div>

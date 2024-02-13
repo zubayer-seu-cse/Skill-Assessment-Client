@@ -61,22 +61,56 @@ export const CreateStudent = () => {
         }
     }
     return (
-        <div className='flex justify-center mt-8'>
-            <form onSubmit={createStudent} className='flex flex-col lg:w-[600px] mt-8' >
-                <input name='studentId' type='text' className='border-2 rounded mt-2' placeholder='Student ID'></input>
-                <div>
-                    <input name='firstName' type='text' className='border-2 rounded mt-2' placeholder='First Name' ></input>
-                    <input name='middleName' type='text' className='border-2 rounded mt-2' placeholder='Middle Name' ></input>
-                    <input name='lastName' type='text' className='border-2 rounded mt-2' placeholder='Last Name' ></input>
-                </div>
-                <input name='gender' type='text' className='border-2 rounded mt-2' placeholder='Gender'></input>
-                <input name='phones' type='text' className='border-2 rounded mt-2' placeholder='Phone Numbers (Ex: 017...., 018....)'></input>
-                <input name='emails' type='text' className='border-2 rounded mt-2' placeholder='Emails (If multiple, write them separated with comma)'></input>
-                <input name='education' type='text' className='border-2 rounded mt-2' placeholder='Educations (Ex: HSC-EUSC-5-2020, .....)'></input>
-                <input name='address' type='text' className='border-2 rounded mt-2' placeholder='Address'></input>
-                <input value='Add Student' type='submit' className='bg-green-500 text-white font-bold rounded-md px-4 py-2 mt-2'></input>
-                <ErrorMessage message={err} />
-            </form>
-        </div>
+        <>
+            <div>
+                <p className='font-bold text-center text-[18px] mt-4'>Add a Student</p>
+            </div>
+            <div className='flex justify-center px-4 mt-2'>
+                <form onSubmit={createStudent} className='flex flex-col lg:w-[600px]' >
+                    <div>
+                        <label className='text-[13px] font-bold'>Student ID</label>
+                        <input name='studentId' type='text' className='w-full border-2 px-2 lg:px-4 rounded mb-2' placeholder='Student ID'></input>
+                    </div>
+                    <div className='grid grid-cols-3 gap-2'>
+                        <div>
+                            <label className='text-[13px] font-bold'>First Name</label>
+                            <input name='firstName' type='text' className='w-full border-2 px-2 lg:px-4 rounded mb-2' placeholder='First Name' ></input>
+                        </div>
+
+                        <div>
+                            <label className='text-[13px] font-bold'>Middle Name</label>
+                            <input name='middleName' type='text' className='w-full border-2 px-2 lg:px-4 rounded mb-2' placeholder='Middle Name' ></input>
+                        </div>
+
+                        <div>
+                            <label className='text-[13px] font-bold'>Last Name</label>
+                            <input name='lastName' type='text' className='w-full border-2 px-2 lg:px-4 rounded mb-2' placeholder='Last Name' ></input>
+                        </div>
+                    </div>
+                    <div>
+                        <label className='text-[13px] font-bold'>Gender</label>
+                        <input name='gender' type='text' className='w-full border-2 px-2 lg:px-4 rounded mb-2' placeholder='Gender'></input>
+                    </div>
+                    <div>
+                        <label className='text-[13px] font-bold'>Phone Numbers</label>
+                        <input name='phones' type='text' className='w-full border-2 px-2 lg:px-4 rounded mb-2' placeholder='Phone Numbers (Ex: 017...., 018....)'></input>
+                    </div>
+                    <div>
+                        <label className='text-[13px] font-bold'>Emails</label>
+                        <input name='emails' type='text' className='w-full border-2 px-2 lg:px-4 rounded mb-2' placeholder='Emails (If multiple, write them separated with comma)'></input>
+                    </div>
+                    <div>
+                        <label className='text-[13px] font-bold'>Education</label>
+                        <input name='education' type='text' className='w-full border-2 px-2 lg:px-4 rounded mb-2' placeholder='Educations (Ex: HSC-EUSC-5-2020, .....)'></input>
+                    </div>
+                    <div>
+                        <label className='text-[13px] font-bold'>Address</label>
+                        <input name='address' type='text' className='w-full border-2 px-2 lg:px-4 rounded mb-2' placeholder='Address'></input>
+                    </div>
+                    <input value='Add Student' type='submit' className='bg-green-500 text-white font-bold rounded-md px-4 py-2 mt-2'></input>
+                    <ErrorMessage message={err} />
+                </form>
+            </div>
+        </>
     )
 }
