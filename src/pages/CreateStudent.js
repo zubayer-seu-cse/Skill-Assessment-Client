@@ -49,7 +49,7 @@ export const CreateStudent = () => {
         }
 
         try {
-            const { data } = await axios.post("http://localhost:8080/create-student", studentData)
+            const { data } = await axios.post("https://seu-course-registration.onrender.com/create-student", studentData)
             if (!data._id) {
                 setErr("Student Exists!")
             } else {

@@ -12,7 +12,7 @@ export const UpdateStudent = () => {
     const [selectedCourses, setSelectedCourses] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:8080/get-student-info/" + studentId)
+        axios.get("https://seu-course-registration.onrender.com/get-student-info/" + studentId)
             .then(res => {
                 setStudent(res.data)
                 setSelectedCourses(res.data.assignedCourses)
@@ -62,7 +62,7 @@ export const UpdateStudent = () => {
         }
 
         try {
-            const { data } = await axios.post("http://localhost:8080/update-student", studentData)
+            const { data } = await axios.post("https://seu-course-registration.onrender.com/update-student", studentData)
             if (!data._id) {
                 setErr("Student Exists!")
                 return

@@ -13,7 +13,7 @@ export const CreateCourse = () => {
         const courseTitle = e.target.courseTitle.value;
         const credits = e.target.credits.value;
 
-        const { data } = await axios.post("http://localhost:8080/create-course", { courseCode, courseTitle, credits })
+        const { data } = await axios.post("https://seu-course-registration.onrender.com/create-course", { courseCode, courseTitle, credits })
         if (data._id) {
             navigate("/")
         } else {

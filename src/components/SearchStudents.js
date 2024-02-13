@@ -15,10 +15,10 @@ export const SearchStudents = ({ setStudentList }) => {
         }
         const keyword = searchText.length == 0 ? "all" : searchText
         if (keyword == "all") {
-            const { data } = await axios.get("http://localhost:8080/get-student-list")
+            const { data } = await axios.get("https://seu-course-registration.onrender.com/get-student-list")
             setStudentList(data)
         } else {
-            const { data } = await axios.post("http://localhost:8080/search-student", {keyword})
+            const { data } = await axios.post("https://seu-course-registration.onrender.com/search-student", {keyword})
             setStudentList(data)
         }
     }

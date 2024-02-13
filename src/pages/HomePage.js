@@ -17,11 +17,11 @@ export const HomePage = ({ courseListState, studentListState }) => {
   }, [])
 
   useEffect(() => {
-    axios.get("http://localhost:8080/get-course-list")
+    axios.get("https://seu-course-registration.onrender.com/get-course-list")
       .then(res => courseListState.setCourseList(res.data))
       .catch(err => console.error(err.message));
 
-    axios.get("http://localhost:8080/get-student-list")
+    axios.get("https://seu-course-registration.onrender.com/get-student-list")
       .then(res => studentListState.setStudentList(res.data))
       .catch(err => console.error(err.message));
   }, [])

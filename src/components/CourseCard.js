@@ -5,7 +5,7 @@ export const CourseCard = ({ course, setCourseList }) => {
   const deleteCourse = () => {
     const isConfirm = window.confirm("Are you sure?")
     if (isConfirm) {
-      axios.delete("http://localhost:8080/delete-course/" + course._id)
+      axios.delete("https://seu-course-registration.onrender.com/delete-course/" + course._id)
         .then(() => setCourseList(courseList => courseList.filter(c => c._id != course._id)))
     }
   }

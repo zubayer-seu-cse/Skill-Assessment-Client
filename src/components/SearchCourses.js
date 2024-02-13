@@ -16,10 +16,10 @@ export const SearchCourses = ({ setCourseList }) => {
         const keyword = searchText.length == 0 ? "all" : searchText
 
         if (keyword == "all") {
-            const { data } = await axios.get("http://localhost:8080/get-course-list")
+            const { data } = await axios.get("https://seu-course-registration.onrender.com/get-course-list")
             setCourseList(data)
         } else {
-            const { data } = await axios.post("http://localhost:8080/search-courses", { keyword })
+            const { data } = await axios.post("https://seu-course-registration.onrender.com/search-courses", { keyword })
             setCourseList(data)
         }
     }

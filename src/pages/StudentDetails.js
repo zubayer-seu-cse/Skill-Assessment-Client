@@ -7,13 +7,13 @@ export const StudentDetails = () => {
     const { studentId } = useParams()
     const [student, setStudent] = useState({})
     useEffect(() => {
-        axios.get("http://localhost:8080/get-student-info/" + studentId).then(res => setStudent(res.data))
+        axios.get("https://seu-course-registration.onrender.com/get-student-info/" + studentId).then(res => setStudent(res.data))
     }, [])
 
     const deleteAccount = () => {
         const isConfirm = window.confirm("Are you sure?")
         if (isConfirm) {
-            axios.delete("http://localhost:8080/delete-student-account/" + student._id).then(() => navigate("/"))
+            axios.delete("https://seu-course-registration.onrender.com/delete-student-account/" + student._id).then(() => navigate("/"))
         }
     }
     return (

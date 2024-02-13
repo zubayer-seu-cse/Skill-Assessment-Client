@@ -10,11 +10,11 @@ export const CourseRegistration = () => {
   const [studentList, setStudentList] = useState([])
 
   useEffect(() => {
-    axios.get("http://localhost:8080/get-course-list")
+    axios.get("https://seu-course-registration.onrender.com/get-course-list")
       .then(res => setCourseList(res.data))
       .catch(err => console.error(err.message));
 
-    axios.get("http://localhost:8080/get-student-list")
+    axios.get("https://seu-course-registration.onrender.com/get-student-list")
       .then(res => setStudentList(res.data))
       .catch(err => console.error(err.message));
   }, [])
@@ -25,7 +25,7 @@ export const CourseRegistration = () => {
   const [selectedStudent, setSelectedStudent] = useState({})
 
   const finalize = () => {
-    axios.post("http://localhost:8080/assign-courses", { selectedStudent, selectedCourses })
+    axios.post("https://seu-course-registration.onrender.com/assign-courses", { selectedStudent, selectedCourses })
       .then(res => navigate("/"))
       .catch(err => console.error(err.message))
   }

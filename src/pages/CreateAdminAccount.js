@@ -15,7 +15,7 @@ export const CreateAdminAccount = () => {
         const email = e.target.email.value
         const password = e.target.password.value
 
-        axios.post("http://localhost:8080/create-admin-account", { verification_key, name, username, email, password })
+        axios.post("https://seu-course-registration.onrender.com/create-admin-account", { verification_key, name, username, email, password })
             .then(res => {
                 if (res.data._id) {
                     localStorage.setItem("seu-student-registration", JSON.stringify(res.data))

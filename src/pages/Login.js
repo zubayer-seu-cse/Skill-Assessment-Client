@@ -20,7 +20,7 @@ export const Login = () => {
         const username = e.target.username.value
         const password = e.target.password.value
 
-        axios.post("http://localhost:8080/login", { username, password })
+        axios.post("https://seu-course-registration.onrender.com/login", { username, password })
             .then(res => {
                 if (res.data?._id) {
                     localStorage.setItem("seu-student-registration", JSON.stringify(res.data))
