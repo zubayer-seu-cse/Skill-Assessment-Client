@@ -46,7 +46,7 @@ export const CourseRegistration = () => {
       <div style={{ display: visibilityToggle ? "none" : "block" }}>
 
 
-        <p className='text-center font-bold'>Selected Courses for <span className='text-green-500'>{selectedStudent.name.firstName}</span></p>
+        <p className='text-center font-bold'>Selected Courses for <span className='text-green-500'>{selectedStudent.name?.firstName}</span></p>
         <div className='grid grid-cols-3 lg:grid-cols-12 mt-4' >
           {
             selectedCourses.length ? selectedCourses.map(course => <SelectedCourseCard course={course} selectedCoursesState={{ selectedCourses, setSelectedCourses }} />)

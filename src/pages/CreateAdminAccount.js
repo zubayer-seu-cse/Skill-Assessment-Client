@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const CreateAdminAccount = () => {
     const navigate = useNavigate()
@@ -27,16 +27,41 @@ export const CreateAdminAccount = () => {
             .catch(err => setErr(err.message))
     }
     return (
-        <div className='flex justify-center mt-8'>
-            <form onSubmit={login} className='flex flex-col lg:w-[500px]'>
-                <input name='verification_key' type='text' className='border-2 rounded' ></input>
-                <input name='name' type='text' className='border-2 rounded' ></input>
-                <input name='username' type='text' className='border-2 rounded' ></input>
-                <input name='email' type='text' className='border-2 rounded' ></input>
-                <input name='password' type='password' className='border-2 rounded' ></input>
-                <input type='submit' value={"Login"} ></input>
-                <p>{err}</p>
-            </form>
-        </div>
+        <>
+            <div>
+                <p className='font-bold text-center text-[18px] mt-4'>Create Admin Account!</p>
+            </div>
+            <div className='flex justify-center mt-8'>
+                <form onSubmit={login} className='flex flex-col w-full px-4 lg:w-[500px]'>
+                    <div>
+                        <label className='text-[13px] font-bold'>Verification Key</label>
+                        <input name='verification_key' type='text' className='w-full mb-2 border-2 rounded' ></input>
+                    </div>
+                    <div>
+                        <label className='text-[13px] font-bold'>Name</label>
+                        <input name='name' type='text' className='w-full mb-2 border-2 rounded' ></input>
+                    </div>
+                    <div>
+                        <label className='text-[13px] font-bold'>Username</label>
+                        <input name='username' type='text' className='w-full mb-2 border-2 rounded' ></input>
+                    </div>
+                    <div>
+                        <label className='text-[13px] font-bold'>Email</label>
+                        <input name='email' type='text' className='w-full mb-2 border-2 rounded' ></input>
+                    </div>
+                    <div>
+                        <label className='text-[13px] font-bold'>Password</label>
+                        <input name='password' type='password' className='w-full mb-2 border-2 rounded' ></input>
+                    </div>
+                    <input type='submit' value={"Create Account"} className='p-2 px-4 bg-green-500 rounded-md mt-2 text-white font-bold' ></input>
+                    <p>{err}</p>
+                </form>
+            </div>
+            <div className='text-center font-bold mt-2'>
+                <Link to={"/login"}>
+                    Already have an account? <span className='text-blue-500'>Login</span>
+                </Link>
+            </div>
+        </>
     )
 }

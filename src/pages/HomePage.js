@@ -30,7 +30,7 @@ export const HomePage = ({ courseListState, studentListState }) => {
   return (
     <>
       <div className='text-center font-bold text-[18px]'>
-        <p>Welcome, <span className='text-green-500'>{loggedInUser.name}</span></p>
+        <p>Welcome, <span className='text-green-500'>{loggedInUser?.name}</span></p>
       </div>
 
       <div className='grid grid-cols-1 lg:gap-8 lg:grid-cols-2 mx-4 lg:mx-8'>
