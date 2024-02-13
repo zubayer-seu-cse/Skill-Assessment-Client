@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
@@ -5,28 +6,19 @@ export const CreateCourse = () => {
     const navigate = useNavigate();
     const [err, setErr] = useState("");
 
-    const createCourse = (e) => {
+    const createCourse = async (e) => {
         e.preventDefault();
 
         const courseCode = e.target.courseCode.value;
         const courseTitle = e.target.courseTitle.value;
         const credits = e.target.credits.value;
 
-        fetch("http://localhost:8080/create-course", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({ courseCode, courseTitle, credits })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data._id != "N/A") {
-                    navigate("/")
-                } else {
-                    setErr("An error occured!")
-                }
-            })
+        const { data } = await axios.post("http://localhost:8080/create-course", { courseCode, courseTitle, credits })
+        if (data._id) {
+            navigate("/")
+        } else {
+            setErr("An error occured!")
+        }
     }
     return (
         <div className='flex justify-center mt-8'>

@@ -1,7 +1,9 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { json, useNavigate } from 'react-router-dom'
 
 export const Login = () => {
+    
     const navigate = useNavigate()
     const [err, setErr] = useState("");
     
@@ -11,21 +13,9 @@ export const Login = () => {
         const username = e.target.username.value
         const password = e.target.password.value
 
-        fetch("http://localhost:8080/login", {
-            method: "POST",
-            headers:{
-                "content-type" : "application/json"
-            },
-            body: JSON.stringify({username, password})
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data._id != "N/A"){
-                navigate("/")
-            } else {
-                setErr("Username or Password is incorrect!")
-            }
-        })
+        axios.post("http://localhost:8080/login", {username, password})
+        .then(res => res.data._id? navigate("/") : setErr("Username or Password is incorrect!"))
+        .catch(err => setErr(err.message))
     }
     return (
         <div className='flex justify-center mt-8'>

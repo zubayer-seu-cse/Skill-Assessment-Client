@@ -11,7 +11,7 @@ export const StudentDetails = () => {
     }, [])
 
     const deleteAccount = () => {
-        axios.delete("http://localhost:8080/delete-student-account/" + student._id)
+        axios.delete("http://localhost:8080/delete-student-account/" + student._id).then(() => navigate("/"))
     }
     return (
         <div className='flex flex-col items-center mt-2'>

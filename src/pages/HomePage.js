@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { CourseCard } from '../components/CourseCard'
 import { StudentCard } from '../components/StudentCard'
+import { SearchStudents } from '../components/SearchStudents'
+import { SearchCourses } from '../components/SearchCourses'
 
 export const HomePage = ({ courseListState, studentListState }) => {
 
@@ -19,6 +21,7 @@ export const HomePage = ({ courseListState, studentListState }) => {
   return (
     <div className='grid grid-cols-2 mx-8'>
       <div>
+        <SearchStudents setStudentList={studentListState.setStudentList} />
         <div className='grid grid-cols-3 rounded-md my-2 font-bold'>
           <p className='text-center'>Name</p>
           <p className='text-center'>Student Id</p>
@@ -28,13 +31,14 @@ export const HomePage = ({ courseListState, studentListState }) => {
         }
       </div>
       <div className='px-8'>
-        <div className='grid grid-cols-3 rounded-md my-2 font-bold'>
+        <SearchCourses setCourseList={courseListState.setCourseList} />
+        <div className='grid grid-cols-4 rounded-md my-2 font-bold'>
           <p className='text-center'>Course Title</p>
           <p className='text-center'>CourseCode</p>
           <p className='text-center'>Course Credits</p>
         </div>
         {
-          courseListState.courseList?.map(course => <CourseCard course={course} key={course._id} />)
+          courseListState.courseList?.map(course => <CourseCard course={course} setCourseList={courseListState.setCourseList} key={course._id} />)
         }
       </div>
     </div>
