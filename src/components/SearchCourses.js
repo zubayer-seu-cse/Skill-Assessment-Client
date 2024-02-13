@@ -19,14 +19,14 @@ export const SearchCourses = ({ setCourseList }) => {
             const { data } = await axios.get("http://localhost:8080/get-course-list")
             setCourseList(data)
         } else {
-            const { data } = await axios.get("http://localhost:8080/search-courses/" + keyword)
+            const { data } = await axios.post("http://localhost:8080/search-courses", { keyword })
             setCourseList(data)
         }
     }
     return (
         <form onSubmit={search} className='flex items-center'>
-            <input onChange={search} type="text" name="searchText" className='grow h-[30px] w-[200px] lg:w-[300px] rounded-full mr-2 lg:mr-4 px-4 border-black border-[2px]' />
-            <input type='submit' value="Search" className='h-[35px] font-bold px-2 py-1 rounded-md bg-orange-400 text-white' />
+            <input onChange={search} type="text" name="searchText" className='grow focus:shadow-2 focus:border-0 focus:outline-0 h-[30px] w-[200px] lg:w-[300px] rounded-full mr-2 lg:mr-4 px-4 border-black border-[2px]' />
+            <input type='submit' value="Search" className='cursor-pointer h-[35px] font-bold px-2 py-1 rounded-md bg-orange-400 text-white' />
         </form>
     )
 }

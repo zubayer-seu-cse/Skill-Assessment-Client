@@ -18,14 +18,14 @@ export const SearchStudents = ({ setStudentList }) => {
             const { data } = await axios.get("http://localhost:8080/get-student-list")
             setStudentList(data)
         } else {
-            const { data } = await axios.get("http://localhost:8080/search-student/" + keyword)
+            const { data } = await axios.post("http://localhost:8080/search-student", {keyword})
             setStudentList(data)
         }
     }
     return (
         <form onSubmit={search} className='flex items-center'>
-            <input onChange={search} type="text" name="searchText" className='grow h-[30px] w-[200px] lg:w-[300px] rounded-full mr-2 lg:mr-4 px-4 border-black border-[2px]' />
-            <input type='submit' value="Search" className='h-[35px] font-bold px-2 py-1 rounded-md bg-blue-500 text-white' />
+            <input onChange={search} type="text" name="searchText" className='grow focus:shadow-2 focus:border-0 focus:outline-0 focus-:h-[35px] h-[30px] w-[200px] lg:w-[300px] rounded-full mr-2 lg:mr-4 px-4 border-black border-[2px]' />
+            <input type='submit' value="Search" className='cursor-pointer h-[35px] font-bold px-2 py-1 rounded-md bg-blue-500 text-white' />
         </form>
     )
 }

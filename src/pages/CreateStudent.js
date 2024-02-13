@@ -29,8 +29,8 @@ export const CreateStudent = () => {
             const eduEntry = {
                 degree: temp[0],
                 institute: temp[1],
-                passingYear: temp[2],
-                gpa: parseFloat(temp[3]),
+                gpa: parseFloat(temp[2]),
+                passingYear: temp[3],
             }
             return eduEntry;
         })

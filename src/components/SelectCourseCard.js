@@ -8,7 +8,7 @@ export const SelectCourseCard = ({ course, selectedCoursesState }) => {
   }
   return (
     <div>
-      <div className='grid grid-cols-4 border-2 border-black rounded-md my-2 font-bold'>
+      <div className='grid grid-cols-4 shadow-1 rounded-md my-2 font-bold'>
         <p className='flex items-center justify-center px-4'>{course.courseTitle}</p>
         <p className='flex items-center justify-center px-4'>{course.courseCode}</p>
         <p className='flex items-center justify-center px-4'>{course.credits}</p>

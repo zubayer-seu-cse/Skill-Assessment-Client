@@ -5,30 +5,35 @@ export const NavigationBar = () => {
     const navigate = useNavigate()
     const [visibile, setVisible] = useState(false)
     const logout = () => {
-        localStorage.removeItem("seu-student-registration")
-        navigate("/login")
+        const isConfirm = window.confirm("Are you sure?")
+        if (isConfirm) {
+            localStorage.removeItem("seu-student-registration")
+            navigate("/login")
+        }
     }
     return (
         <>
-            <div className='flex justify-between px-8 h-[50px] items-center font-bold'>
-                <div className='text-[20px]'>
-                    <Link to={"/"}>SEU Course Registration</Link>
-                </div>
-                <div onClick={() => setVisible(!visibile)}>
-                    <img src="/seu-hamburger-menu.svg" className='lg:hidden w-[30px]' alt="" />
-                </div>
-                <div className='hidden lg:flex'>
-                    <div className='mr-4'>
-                        <Link to={"/course-registration"}>Register Course</Link>
+            <div className='p-2'>
+                <div className='flex justify-between items-center px-8 h-[50px] font-bold rounded-md bg-[#0087BD] text-white'>
+                    <div className='text-[20px]'>
+                        <Link to={"/"}>SEU Course Registration</Link>
                     </div>
-                    <div className='mr-4'>
-                        <Link to={"/create-course"}>Create Course</Link>
+                    <div onClick={() => setVisible(!visibile)}>
+                        <img src="/seu-hamburger-menu.svg" className='lg:hidden w-[30px]' alt="" />
                     </div>
-                    <div className='mr-4'>
-                        <Link to={"/create-student"}>Create Student</Link>
-                    </div>
-                    <div className='mr-4'>
-                        <button onClick={logout}>Logout</button>
+                    <div className='hidden lg:flex items-center'>
+                        <div className='mr-4'>
+                            <Link to={"/course-registration"}>Register Course</Link>
+                        </div>
+                        <div className='mr-4'>
+                            <Link to={"/create-course"}>Create Course</Link>
+                        </div>
+                        <div className='mr-4'>
+                            <Link to={"/create-student"}>Create Student</Link>
+                        </div>
+                        <div className='mr-4'>
+                            <button onClick={logout} className='text-black px-4 py-1 rounded-2xl bg-white' >Logout</button>
+                        </div>
                     </div>
                 </div>
             </div>
