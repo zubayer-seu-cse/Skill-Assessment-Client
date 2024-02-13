@@ -10,36 +10,22 @@ import { CreateStudent } from './pages/CreateStudent';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { StudentDetails } from './pages/StudentDetails';
+import { UpdateStudent } from './pages/UpdateStudent';
 
 function App() {
   const [courseList, setCourseList] = useState([])
   const [studentList, setStudentList] = useState([])
 
-  useEffect(() => {
-    axios.get("http://localhost:8080/get-course-list")
-      .then(res => {
-        setCourseList(res.data)
-        console.log(res.data)
-      })
-      .catch(err => console.error(err.message));
-
-    axios.get("http://localhost:8080/get-student-list")
-      .then(res => {
-        setStudentList(res.data)
-        console.log(res.data)
-      })
-      .catch(err => console.error(err.message));
-  }, [])
-
 
   return (
     <Routes>
-      <Route element={<HomePage courseList={courseList} studentList={studentList} />} path='/' ></Route>
+      <Route element={<HomePage courseListState={{courseList, setCourseList}} studentListState={{studentList, setStudentList}} />} path='/' ></Route>
       <Route element={<Test/>} path='/test' ></Route>
       <Route element={<CourseRegistration courseList={courseList} studentList={studentList} />} path='/course-registration' ></Route>
       <Route element={<CreateCourse/>} path='/create-course' ></Route>
       <Route element={<CreateStudent/>} path='/create-student' ></Route>
       <Route element={<StudentDetails/>} path='/student/:studentId' ></Route>
+      <Route element={<UpdateStudent/>} path='/update-student/:studentId' ></Route>
       <Route element={<Login/>} path='/login' ></Route>
     </Routes>
   );

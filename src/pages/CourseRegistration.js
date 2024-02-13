@@ -12,13 +12,13 @@ export const CourseRegistration = ({ courseList, studentList }) => {
   const [selectedStudent, setSelectedStudent] = useState({})
 
   const finalize = () => {
-    axios.post("http://localhost:8080/assign-courses", {selectedStudent, selectedCourses})
-    .then(res => navigate("/"))
-    .catch(err => console.error(err.message))
+    axios.post("http://localhost:8080/assign-courses", { selectedStudent, selectedCourses })
+      .then(res => navigate("/"))
+      .catch(err => console.error(err.message))
   }
 
   return (
-    <div>
+    <div className='px-8'>
 
       <div style={{ display: visibilityToggle ? "block" : "none" }} >
         {
@@ -28,14 +28,18 @@ export const CourseRegistration = ({ courseList, studentList }) => {
 
       <div style={{ display: visibilityToggle ? "none" : "block" }}>
         <p className='text-center font-bold'>Selected Courses for x</p>
-        <div>
+        <div className='grid grid-cols-3 lg:grid-cols-12' >
           {
             selectedCourses.length ? selectedCourses.map(course => <SelectedCourseCard course={course} selectedCoursesState={{ selectedCourses, setSelectedCourses }} />)
               :
               <p className='text-center font-bold text-grey-500'>No coures assigned yet!</p>
           }
         </div>
-        <button onClick={finalize} style={selectedCourses.length ? { display: "block" } : { display: "none" }} >Finalize</button>
+        <div className='flex justify-end'>
+          <button onClick={finalize} style={selectedCourses.length ? { display: "block" } : { display: "none" }} className='p-2 px-4 bg-green-500 rounded-md mt-2 text-white font-bold' >
+            Finalize
+          </button>
+        </div>
 
         <p className='text-center font-bold'>Select Courses</p>
         <div>

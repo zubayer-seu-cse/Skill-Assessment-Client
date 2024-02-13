@@ -1,13 +1,18 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 
 export const StudentDetails = () => {
+    const navigate = useNavigate()
     const { studentId } = useParams()
     const [student, setStudent] = useState({})
     useEffect(() => {
         axios.get("http://localhost:8080/get-student-info/" + studentId).then(res => setStudent(res.data))
     }, [])
+
+    const deleteAccount = () => {
+        axios.delete("http://localhost:8080/delete-student-account/" + student._id)
+    }
     return (
         <div className='flex flex-col items-center mt-2'>
             <p className='text-center font-bold mb-4'>Details of {student.studentId}</p>
@@ -88,6 +93,15 @@ export const StudentDetails = () => {
                 }
 
             </table>
+
+            <div className='mb-8'>
+                <button onClick={() => navigate('/update-student/' + student.studentId)} className='p-2 mr-4 px-4 bg-green-500 rounded-md mt-2 text-white font-bold'>
+                    Update
+                </button>
+                <button onClick={deleteAccount} className='p-2 px-4 bg-red-700 rounded-md mt-2 text-white font-bold'>
+                    Delete this Student Account!
+                </button>
+            </div>
         </div>
     )
 }
